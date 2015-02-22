@@ -23,6 +23,7 @@ namespace battleships
 				tester.TestSingleFile(aiPath);
 			else
 				Console.WriteLine("No AI exe-file " + aiPath);
+		    Console.ReadKey();
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace battleships
 {
 	public class ShotInfo
 	{
-		public ShtEffct Hit;
+		public ShotResult Hit;
 		public Vector Target;
 	}
 
@@ -42,9 +42,9 @@ namespace battleships
 			if (IsOver()) throw new InvalidOperationException("Game is Over");
 			if (!UpdateLastTarget()) return;
 			if (IsBadShot(LastTarget)) BadShots++;
-			var hit = Map.Badaboom(LastTarget);
+			var hit = Map.GetShotResult(LastTarget);
 			LastShotInfo = new ShotInfo {Target = LastTarget, Hit = hit};
-			if (hit == ShtEffct.Miss)
+			if (hit == ShotResult.Miss)
 				TurnsCount++;
 		}
 
@@ -69,10 +69,10 @@ namespace battleships
 
 		private bool IsBadShot(Vector target)
 		{
-			var cellWasHitAlready = Map[target] != MapCell.Empty && Map[target] != MapCell.Ship;
-			var cellIsNearDestroyedShip = Map.Near(target).Any(c => Map.shipsMap[c.X, c.Y] != null && !Map.shipsMap[c.X, c.Y].Alive);
+			var cellWasHitAlready = Map[target] != CellState.Empty && Map[target] != CellState.Ship;
+			var cellIsNearDestroyedShip = Map.CellNeighborhood(target).Any(c => Map.shipsMap[c.X, c.Y] != null && !Map.shipsMap[c.X, c.Y].Alive);
 			var diagonals = new[] { new Vector(-1, -1), new Vector(-1, 1), new Vector(1, -1), new Vector(1, 1) };
-			var cellHaveWoundedDiagonalNeighbour = diagonals.Any(d => Map[target.Add(d)] == MapCell.DeadOrWoundedShip);
+			var cellHaveWoundedDiagonalNeighbour = diagonals.Any(d => Map[target.Add(d)] == CellState.DeadOrWoundedShip);
 			return cellWasHitAlready || cellIsNearDestroyedShip || cellHaveWoundedDiagonalNeighbour;
 		}
 	}

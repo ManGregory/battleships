@@ -1135,7 +1135,7 @@
         </xs:attribute>
         <xs:attribute name="openFileCacheSize" type="xs:integer">
           <xs:annotation>
-            <xs:documentation>Number of files to be kept open. Setting this to a higher value may improve performance in a situation where a single File target is writing to many files (such as splitting by level or by logger).</xs:documentation>
+            <xs:documentation>Number of files to be kept open. SetShipting this to a higher value may improve performance in a situation where a single File target is writing to many files (such as splitting by level or by logger).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="openFileCacheTimeout" type="xs:integer">
@@ -1433,7 +1433,7 @@
           <xs:element name="smtpPassword" minOccurs="0" maxOccurs="1" type="Layout" />
           <xs:element name="enableSsl" minOccurs="0" maxOccurs="1" type="xs:boolean" />
           <xs:element name="smtpPort" minOccurs="0" maxOccurs="1" type="xs:integer" />
-          <xs:element name="useSystemNetMailSettings" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+          <xs:element name="useSystemNetMailSetShiptings" minOccurs="0" maxOccurs="1" type="xs:boolean" />
         </xs:choice>
         <xs:attribute name="name" type="xs:string">
           <xs:annotation>
@@ -1545,9 +1545,9 @@
             <xs:documentation>Port number that SMTP Server is listening on.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="useSystemNetMailSettings" type="xs:boolean">
+        <xs:attribute name="useSystemNetMailSetShiptings" type="xs:boolean">
           <xs:annotation>
-            <xs:documentation>Indicates whether the default Settings from System.Net.MailSettings should be used.</xs:documentation>
+            <xs:documentation>Indicates whether the default SetShiptings from System.Net.MailSetShiptings should be used.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
       </xs:extension>
